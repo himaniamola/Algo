@@ -102,4 +102,94 @@ namespace Algos
             }
         }
     }
+
+    public static class HeapFunc
+    {
+        public static void BuildMaxHeapify(decimal[] arr)
+        {
+            int len = arr.Length / 2;
+
+            for (int i = len; i > 0; i--)
+            {
+                MaxHeapify(arr, i);
+            }
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.Write($"{arr[i]} | ");
+            }
+            Console.WriteLine("--------------------------------------------------------------------");
+        }
+
+        public static void BuildMaxHeapify(int[] arr)
+        {
+            int len = arr.Length / 2;
+
+            for (int i = len; i > 0; i--)
+            {
+                MaxHeapify(arr, i);
+            }
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine($"{arr[i]} | ");
+            }
+        }
+
+        private static void MaxHeapify(int[] arr, int i)
+        {
+            int left = arr[i * 2-2], right = arr[i * 2 - 1];
+            int ele = arr[i-1];
+
+            if(ele < left)
+            {
+                if (left < right)
+                {
+                    int temp = ele;
+                    arr[i - 1] = right;
+                    arr[i * 2 - 1] = temp;
+                }
+                else
+                {
+                    int temp = ele;
+                    arr[i - 1] = left;
+                    arr[i * 2 - 2] = temp;
+                }
+            }
+            else if(ele < right)
+            {
+                int temp = ele;
+                arr[i - 1] = right;
+                arr[i * 2 - 1] = temp;
+            }
+        }
+
+        private static void MaxHeapify(decimal[] arr, int i)
+        {
+            decimal left = arr[i * 2 - 2], right = arr[i * 2 - 1];
+            decimal ele = arr[i - 1];
+
+            if (ele < left)
+            {
+                if (left < right)
+                {
+                    decimal temp = ele;
+                    arr[i - 1] = right;
+                    arr[i * 2 - 1] = temp;
+                }
+                else
+                {
+                    decimal temp = ele;
+                    arr[i - 1] = left;
+                    arr[i * 2 - 2] = temp;
+                }
+            }
+            else if (ele < right)
+            {
+                decimal temp = ele;
+                arr[i - 1] = right;
+                arr[i * 2 - 1] = temp;
+            }
+        }
+    }
 }
